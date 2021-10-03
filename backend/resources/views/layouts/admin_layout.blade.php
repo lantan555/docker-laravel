@@ -54,15 +54,22 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item">
-            <a href="/admin_panel" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Главная
-              </p>
-            </a>
-          </li>
-
+            <li class="nav-item">
+                <a href="/admin_panel" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Главная
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('user.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Пользователи
+                    </p>
+                </a>
+            </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -114,7 +121,25 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    @yield('content')
+      <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">@yield('title')</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/" target="_blank">Перейти на сайт</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            @yield('content')
+        </div>
+    </section>
   </div>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

@@ -57,10 +57,10 @@
                             </li>
                             @role('admin')
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/admin_panel">Админ-панель</a>
+                                    <a class="nav-link" href="/user-list">Список пользователей</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/user-list">Список пользователей</a>
+                                    <a type="button" class="btn btn-warning"  href="/admin_panel">Админ-панель</a>
                                 </li>
                             @endrole
                         @endguest
