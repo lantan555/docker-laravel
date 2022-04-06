@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Category;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -10,23 +12,35 @@ use App\Http\Controllers\Admin\CategoryController;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| contains the "web" middleware group. Now create somethiEager Load Relationships on an Existing Model
+ng great!
 |
 */
 
 Route::get('/', function () {
-    return view('home');
-});
+    return view('posts', [
+        'posts' => Post::latest()->get(),
+        'categories' => Category::all()
+    ]);
+})->name('home');
 
-Auth::routes();
+Route::get('posts/{post:slug}', function (Post $post) {
+    return view('post', [
+        'post' => $post
+    ]);
+})->name('post');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/user-list', [App\Http\Controllers\UserController::class, 'index']);
+Route::get('categories/{category:slug}', function (Category $category) {
+    return view('posts', [
+        'posts' => $category->posts,
+        'currentCategory' => $category,
+        'categories' => Category::all()
+    ]);
+})->name('category');
 
-Route::middleware(['role:admin'])->prefix('admin_panel')->group(function () {
-    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index']);
-
-    Route::resource('category', CategoryController::class);
-
-});
-
+Route::get('authors/{author:username}', function (User $author) {
+    return view('posts', [
+        'posts' => $author->posts,
+        'categories' => Category::all()
+    ]);
+})->name('author');
