@@ -1,0 +1,32 @@
+@import "utilities/transition";
+
+@import "fonts";
+@import "components/buttons";
+@import "components/c-container";
+@import "components/header";
+@import "components/menu";
+@import "components/form";
+
+@layer base {
+    .section-title {
+        @apply text-[36px] md:text-[46px];
+    }
+}
+
+@tailwind base;
+
+input:invalid,
+textarea:invalid,
+select:invalid {
+    box-shadow: none;
+}
+body {
+    @apply bg-white;
+}
+
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}

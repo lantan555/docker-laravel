@@ -1,0 +1,42 @@
+@layer components {
+    .menu {
+        @apply flex space-x-4;
+
+        &__item {
+            @apply tr py-1 px-2 text-black/80 hover:bg-gray-50 cursor-pointer;
+            &.active {
+                @apply bg-gray-100;
+            }
+            &:hover {
+                & > .menu__link {
+                    @apply text-primary;
+                }
+            }
+        }
+        &__item-parent {
+            @apply flex  items-center relative;
+        }
+        &__link {
+            @apply tr text-black font-semibold text-[16px] relative;
+        }
+        &__icon-dropdown {
+            @apply h-3 w-3 ml-2 fill-primary;
+        }
+    }
+
+    .submenu {
+        @apply absolute top-full left-0 bg-white p-3 min-w-max shadow-[5px_5px_5px_-5px_rgba(34,_60,_80,_0.6)];
+
+        &__item {
+            @apply w-full;
+        }
+        &__link {
+            @apply block text-[14px] text-black/80 py-1 px-2 w-full hover:bg-gray-50 tr hover:text-primary font-semibold;
+        }
+        &__item:hover {
+            & .submenu__link {
+                @apply text-primary tr;
+            }
+        }
+    }
+}

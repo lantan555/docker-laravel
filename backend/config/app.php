@@ -125,6 +125,10 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'email' => 'artem@apprint.ru',
+    'phone' => '8 (812) 994-16-47',
+    'address' => 'ул. Бассейная, д.21',
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
